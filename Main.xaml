@@ -101,11 +101,10 @@
                     </Sequence>
                   </If.Then>
                 </If>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke KillApplications workflow" UnSafe="False" WorkflowFileName="Framework\KillApplications.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke KillApplications workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\KillApplications.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <scg:Dictionary x:TypeArguments="x:String, Argument" />
                   </ui:InvokeWorkflowFile.Arguments>
-                  <sap2010:WorkflowViewState.IdRef>InvokeWorkflowFile_5</sap2010:WorkflowViewState.IdRef>
                 </ui:InvokeWorkflowFile>
                 <Sequence DisplayName="Init Applications" sap2010:WorkflowViewState.IdRef="Sequence_26">
                   <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open application 'calc.exe  计算器'" FileName="C:\Windows\system32\calc.exe" sap2010:WorkflowViewState.IdRef="OpenApplication_1" InformativeScreenshot="81807657673d0b353ff7d407e0ce9856" Selector="&lt;wnd app='calc.exe' cls='CalcFrame' title='计算器' /&gt;">
@@ -174,7 +173,7 @@
                         </Assign>
                         <Assign sap2010:WorkflowViewState.IdRef="Assign_34">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:Object">[TransactionRow("Status")]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Object">[TransactionRow("TransactionStatus")]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="x:Object">[String.Empty]</InArgument>
@@ -196,14 +195,16 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                           </ActivityAction.Argument>
-                          <Assign sap2010:WorkflowViewState.IdRef="Assign_21">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="sd:DataRow">[TransactionRow]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="sd:DataRow">[nothing]</InArgument>
-                            </Assign.Value>
-                          </Assign>
+                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_39">
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_21">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="sd:DataRow">[TransactionRow]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="sd:DataRow">[nothing]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
                         </ActivityAction>
                       </Catch>
                     </TryCatch.Catches>
@@ -299,7 +300,7 @@
                               <Sequence DisplayName="Set Status" sap2010:WorkflowViewState.IdRef="Sequence_35">
                                 <Assign sap2010:WorkflowViewState.IdRef="Assign_31">
                                   <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Object">[TransactionRow("Status")]</OutArgument>
+                                    <OutArgument x:TypeArguments="x:Object">[TransactionRow("TransactionStatus")]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
                                     <InArgument x:TypeArguments="x:Object">["Error"]</InArgument>
@@ -321,7 +322,7 @@
                             <Transition.Action>
                               <Assign sap2010:WorkflowViewState.IdRef="Assign_33">
                                 <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Object">[TransactionRow("Status")]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:Object">[TransactionRow("TransactionStatus")]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
                                   <InArgument x:TypeArguments="x:Object">["Success"]</InArgument>
@@ -335,7 +336,7 @@
                               <Sequence DisplayName="Set Status" sap2010:WorkflowViewState.IdRef="Sequence_34">
                                 <Assign sap2010:WorkflowViewState.IdRef="Assign_29">
                                   <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Object">[TransactionRow("Status")]</OutArgument>
+                                    <OutArgument x:TypeArguments="x:Object">[TransactionRow("TransactionStatus")]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
                                     <InArgument x:TypeArguments="x:Object">["Failed"]</InArgument>
@@ -378,7 +379,7 @@
       <Variable x:TypeArguments="sd:DataRow" Name="TransactionRow" />
       <Variable x:TypeArguments="ui:BusinessRuleException" Name="BusinessRuleException" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>dylDOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXE1haW4ueGFtbGNIA/4CEgIBAfgCf/gCggEDAYMBSgfuAg8CAVyiAQ/qAhcCAUfXARflAh8CAQ2SAQ+dARcCAQJMC40BFgIBY5ABbJABiQECAWCgAWegAYEBAgFepAET0gEeAgFM1QF01QGUAQIBSugCkQHoAq4BAgFJ2QEbpgImAgEmvgIzvgJOAgEjqwIfvAIqAgEbywIzywJwAgEawgIfyQIoAgEX4gIz4gJYAgEWzwIf4AIqAgEPlAETmwEeAgEETg96GgIBaYIBE4kBHAIBZKYBF78BIgIBUccBG84BJAIBTdsBH+oBKgIBPI0CH6QCKgIBMfIBI/kBLAIBLIECI4gCLAIBJ6wCIbMCKgIBILQCIbsCKgIBHMcCSscCVQIBGcQCS8QCZQIBGNACIdcCKgIBE9gCId8CKgIBEJUBFZkBLQIBC5oBFZoB5QECAQVPEVYaAgF/VxFnFgIBcWgRbSkCAW9uEXkcAgFqhwFBhwFMAgFnhAFChAFPAgFlpwEZrgEiAgFYrwEZtgEiAgFVtwEZvgEiAgFSzAFIzAFRAgFQyQFJyQFZAgFO3AEh4wEqAgFD5AEh6QE5AgE9jwIjmAIuAgE2oAInoAKDAgIBMvcBXvcBaQIBL/QBX/QBdgIBLYYCUYYCXAIBKoMCUoMCXwIBKLECTLECVQIBIq4CTa4CZwIBIbkCTLkCYQIBHrYCTbYCcQIBHdUCTNUCVgIBFdICTdICZwIBFN0CTN0CawIBEtoCTdoCcQIBEZUBzQGVAe4BAgEMmgHAAZoBxAECAQqaAUCaAVgCAQiaAawBmgGyAQIBB5oB0gGaAeIBAgEGVD9USAMBggFRQFFNAwGAAVcfVzQCAXJZFWUgAgF0aJIBaLMBAgFwbxN4KAIBa6wBRqwBcwIBW6kBR6kBVwIBWbQBRLQBUgIBV7EBRbEBXwIBVrwBRLwBUgIBVLkBRbkBaQIBU+EBXOEBZQIBRt4BXd4BdAIBROcBdecBfQIBQeYBZeYBdQIBP+QB0AHkAd4BAgE+kAIllwIuAgE3oAKVAaACgAICATNaF14vAgF7XxdkLwIBdW/XAm+RAwIBbm/CAW/gAQIBbXUZdWQCAWyVAk+VAmMCATqSAlCSAmICAThcbFx0AgF9WskBWuQBAgF8YlRiagIBeV/SAV/2AQIBeGFkYXoCAXY=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dylDOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXE1haW4ueGFtbGRIA/8CEgIBAfkCf/kCggEDAYQBSgfvAg8CAV2hAQ/rAhcCAUfYARfmAh8CAQ2RAQ+cARcCAQJMC4wBFgIBZI8BbI8BiQECAWGfAWefAYEBAgFfowET0wEeAgFM1gF01gGUAQIBSukCkQHpAq4BAgFJ2gEbpwImAgEmvwIzvwJOAgEjrAIfvQIqAgEbzAIzzAJwAgEawwIfygIoAgEX4wIz4wJYAgEW0AIf4QIqAgEPkwETmgEeAgEETg95GgIBaoEBE4gBHAIBZaUBF74BIgIBUsYBG88BJgIBTdwBH+sBKgIBPI4CH6UCKgIBMfMBI/oBLAIBLIICI4kCLAIBJ60CIbQCKgIBILUCIbwCKgIBHMgCSsgCVQIBGcUCS8UCcAIBGNECIdgCKgIBE9kCIeACKgIBEJQBFZgBLQIBC5kBFZkB5QECAQVPEVYaAwGAAVcRZxYCAXJoEWwpAgFwbRF4HAIBa4YBQYYBTAIBaIMBQoMBTwIBZqYBGa0BIgIBWa4BGbUBIgIBVrYBGb0BIgIBU8cBHc4BJgIBTt0BIeQBKgIBQ+UBIeoBOQIBPZACI5kCLgIBNqECJ6ECgwICATL4AV74AWkCAS/1AV/1AXYCAS2HAlGHAlwCASqEAlKEAl8CASiyAkyyAlUCASKvAk2vAnICASG6Aky6AmECAR63Ak23AnECAR3WAkzWAlYCARXTAk3TAnICARTeAkzeAmsCARLbAk3bAnECARGUAc0BlAHuAQIBDJkBwAGZAcQBAgEKmQFAmQFYAgEImQGsAZkBsgECAQeZAdIBmQHiAQIBBlQ/VEgDAYMBUUBRTQMBgQFXH1c0AgFzWRVlIAIBdWjJAWjqAQIBcW4TdygCAWyrAUarAXMCAVyoAUeoAVcCAVqzAUSzAVICAViwAUWwAWoCAVe7AUS7AVICAVW4AUW4AWkCAVTMAUrMAVMCAVHJAUvJAVsCAU/iAVziAWUCAUbfAV3fAXQCAUToAXXoAX0CAUHnAWXnAXUCAT/lAdAB5QHeAQIBPpECJZgCLgIBN6EClQGhAoACAgEzWhdeLwIBfF8XZC8CAXZu1wJukQMCAW9uwgFu4AECAW50GXRkAgFtlgJPlgJjAgE6kwJQkwJiAgE4XGxcdAIBflrJAVrkAQIBfWJUYmoCAXpf0gFf9gECAXlhZGF6AgF3</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -425,7 +426,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="TryCatch_8" sap:VirtualizedContainerService.HintSize="504,1520" />
+      <sap2010:ViewStateData Id="TryCatch_8" sap:VirtualizedContainerService.HintSize="504,1480" />
       <sap2010:ViewStateData Id="InvokeWorkflowFile_3" sap:VirtualizedContainerService.HintSize="314,86.6666666666667" />
       <sap2010:ViewStateData Id="WriteRange_1" sap:VirtualizedContainerService.HintSize="314,114.666666666667" />
       <sap2010:ViewStateData Id="Sequence_36" sap:VirtualizedContainerService.HintSize="336,365.333333333333">
@@ -467,6 +468,13 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_21" sap:VirtualizedContainerService.HintSize="242.666666666667,60" />
+      <sap2010:ViewStateData Id="Sequence_39" sap:VirtualizedContainerService.HintSize="264.666666666667,184">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Catch`1_2" sap:VirtualizedContainerService.HintSize="404,21.3333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -478,7 +486,7 @@
       <sap2010:ViewStateData Id="TryCatch_9" sap:VirtualizedContainerService.HintSize="418,616" />
       <sap2010:ViewStateData Id="Assign_23" sap:VirtualizedContainerService.HintSize="314,60" />
       <sap2010:ViewStateData Id="InvokeWorkflowFile_4" sap:VirtualizedContainerService.HintSize="314,86.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_32" sap:VirtualizedContainerService.HintSize="336,310.666666666667">
+      <sap2010:ViewStateData Id="Sequence_32" sap:VirtualizedContainerService.HintSize="336,308.666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -486,7 +494,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_24" sap:VirtualizedContainerService.HintSize="242.666666666667,60" />
-      <sap2010:ViewStateData Id="Catch`1_3" sap:VirtualizedContainerService.HintSize="404,21.3333333333333">
+      <sap2010:ViewStateData Id="Catch`1_3" sap:VirtualizedContainerService.HintSize="400,21.3333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -495,7 +503,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_25" sap:VirtualizedContainerService.HintSize="242.666666666667,60" />
-      <sap2010:ViewStateData Id="Catch`1_4" sap:VirtualizedContainerService.HintSize="404,21.3333333333333">
+      <sap2010:ViewStateData Id="Catch`1_4" sap:VirtualizedContainerService.HintSize="400,21.3333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -521,7 +529,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="TryCatch_12" sap:VirtualizedContainerService.HintSize="418,416" />
-      <sap2010:ViewStateData Id="TryCatch_11" sap:VirtualizedContainerService.HintSize="418,686" />
+      <sap2010:ViewStateData Id="TryCatch_11" sap:VirtualizedContainerService.HintSize="414,210.666666666667" />
       <sap2010:ViewStateData Id="Assign_31" sap:VirtualizedContainerService.HintSize="242.666666666667,60" />
       <sap2010:ViewStateData Id="Assign_32" sap:VirtualizedContainerService.HintSize="242.666666666667,60" />
       <sap2010:ViewStateData Id="Sequence_35" sap:VirtualizedContainerService.HintSize="264.666666666667,284">
@@ -598,7 +606,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_12" sap:VirtualizedContainerService.HintSize="232.666666666667,97.3333333333333">
+      <sap2010:ViewStateData Id="State_12" sap:VirtualizedContainerService.HintSize="444,1002">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">256.333333333333,239.333333333333</av:Point>
@@ -609,7 +617,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_19" sap:VirtualizedContainerService.HintSize="430,812">
+      <sap2010:ViewStateData Id="Transition_19" sap:VirtualizedContainerService.HintSize="430,514.666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">456,125.666666666667 456,155.666666666667 430.833333333333,155.666666666667 430.833333333333,239.333333333333</av:PointCollection>
@@ -618,7 +626,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_13" sap:VirtualizedContainerService.HintSize="530,1974">
+      <sap2010:ViewStateData Id="State_13" sap:VirtualizedContainerService.HintSize="240,111.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">300,14.3333333333333</av:Point>
