@@ -166,7 +166,7 @@
                         </Assign>
                         <Assign sap2010:WorkflowViewState.IdRef="Assign_34">
                           <Assign.To>
-                            <OutArgument x:TypeArguments="x:Object">[TransactionRow("Status")]</OutArgument>
+                            <OutArgument x:TypeArguments="x:Object">[TransactionRow("TransactionStatus")]</OutArgument>
                           </Assign.To>
                           <Assign.Value>
                             <InArgument x:TypeArguments="x:Object">[String.Empty]</InArgument>
@@ -291,7 +291,7 @@
                               <Sequence DisplayName="Set Status" sap2010:WorkflowViewState.IdRef="Sequence_35">
                                 <Assign sap2010:WorkflowViewState.IdRef="Assign_31">
                                   <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Object">[TransactionRow("Status")]</OutArgument>
+                                    <OutArgument x:TypeArguments="x:Object">[TransactionRow("TransactionStatus")]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
                                     <InArgument x:TypeArguments="x:Object">["Error"]</InArgument>
@@ -313,7 +313,7 @@
                             <Transition.Action>
                               <Assign sap2010:WorkflowViewState.IdRef="Assign_33">
                                 <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Object">[TransactionRow("Status")]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:Object">[TransactionRow("TransactionStatus")]</OutArgument>
                                 </Assign.To>
                                 <Assign.Value>
                                   <InArgument x:TypeArguments="x:Object">["Success"]</InArgument>
@@ -327,7 +327,7 @@
                               <Sequence DisplayName="Set Status" sap2010:WorkflowViewState.IdRef="Sequence_34">
                                 <Assign sap2010:WorkflowViewState.IdRef="Assign_29">
                                   <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Object">[TransactionRow("Status")]</OutArgument>
+                                    <OutArgument x:TypeArguments="x:Object">[TransactionRow("TransactionStatus")]</OutArgument>
                                   </Assign.To>
                                   <Assign.Value>
                                     <InArgument x:TypeArguments="x:Object">["Failed"]</InArgument>
@@ -370,7 +370,7 @@
       <Variable x:TypeArguments="sd:DataRow" Name="TransactionRow" />
       <Variable x:TypeArguments="ui:BusinessRuleException" Name="BusinessRuleException" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>dylDOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXE1haW4ueGFtbGBIA/YCEgIBAfACf/ACggEDAYABSgfmAg8CAVyaAQ/iAhcCAUfPARfdAh8CAQ2KAQ+VARcCAQJMC4UBFgIBY4gBbIgBiQECAWCYAWeYAYEBAgFenAETygEeAgFMzQF0zQGUAQIBSuACkQHgAq4BAgFJ0QEbngImAgEmtgIztgJOAgEjowIftAIqAgEbwwIzwwJwAgEaugIfwQIoAgEX2gIz2gJYAgEWxwIf2AIqAgEPjAETkwEeAgEETg9yGgIBaXoTgQEcAgFkngEXtwEiAgFRvwEbxgEkAgFN0wEf4gEqAgE8hQIfnAIqAgEx6gEj8QEsAgEs+QEjgAIsAgEnpAIhqwIqAgEgrAIhswIqAgEcvwJKvwJVAgEZvAJLvAJlAgEYyAIhzwIqAgET0AIh1wIqAgEQjQEVkQEtAgELkgEVkgHlAQIBBU8RVhoCAXxXEWcWAgFuaBFsKQIBbG0RcSkCAWp/QX9MAgFnfEJ8TwIBZZ8BGaYBIgIBWKcBGa4BIgIBVa8BGbYBIgIBUsQBSMQBUQIBUMEBScEBWQIBTtQBIdsBKgIBQ9wBIeEBOQIBPYcCI5ACLgIBNpgCJ5gCgwICATLvAV7vAWkCAS/sAV/sAXYCAS3+AVH+AVwCASr7AVL7AV8CASipAkypAlUCASKmAk2mAmcCASGxAkyxAmECAR6uAk2uAnECAR3NAkzNAlYCARXKAk3KAmcCARTVAkzVAmsCARLSAk3SAnECARGNAc0BjQHuAQIBDJIBwAGSAcQBAgEKkgFAkgFYAgEIkgGsAZIBsgECAQeSAdIBkgHiAQIBBlQ/VEgCAX9RQFFNAgF9Vx9XNAIBb1kVZSACAXFoyQFo6gECAW1tpAJtxAICAWukAUakAXMCAVuhAUehAVcCAVmsAUSsAVICAVepAUWpAV8CAVa0AUS0AVICAVSxAUWxAWkCAVPZAVzZAWUCAUbWAV3WAXQCAUTfAXXfAX0CAUHeAWXeAXUCAT/cAdAB3AHeAQIBPogCJY8CLgIBN5gClQGYAoACAgEzWhdeLwIBeF8XZC8CAXKNAk+NAmMCATqKAlCKAmICAThcbFx0AgF6WskBWuQBAgF5YlRiagIBdl/SAV/2AQIBdWFkYXoCAXM=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dylDOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXE1haW4ueGFtbGBIA/YCEgIBAfACf/ACggEDAYABSgfmAg8CAVyaAQ/iAhcCAUfPARfdAh8CAQ2KAQ+VARcCAQJMC4UBFgIBY4gBbIgBiQECAWCYAWeYAYEBAgFenAETygEeAgFMzQF0zQGUAQIBSuACkQHgAq4BAgFJ0QEbngImAgEmtgIztgJOAgEjowIftAIqAgEbwwIzwwJwAgEaugIfwQIoAgEX2gIz2gJYAgEWxwIf2AIqAgEPjAETkwEeAgEETg9yGgIBaXoTgQEcAgFkngEXtwEiAgFRvwEbxgEkAgFN0wEf4gEqAgE8hQIfnAIqAgEx6gEj8QEsAgEs+QEjgAIsAgEnpAIhqwIqAgEgrAIhswIqAgEcvwJKvwJVAgEZvAJLvAJwAgEYyAIhzwIqAgET0AIh1wIqAgEQjQEVkQEtAgELkgEVkgHlAQIBBU8RVhoCAXxXEWcWAgFuaBFsKQIBbG0RcSkCAWp/QX9MAgFnfEJ8TwIBZZ8BGaYBIgIBWKcBGa4BIgIBVa8BGbYBIgIBUsQBSMQBUQIBUMEBScEBWQIBTtQBIdsBKgIBQ9wBIeEBOQIBPYcCI5ACLgIBNpgCJ5gCgwICATLvAV7vAWkCAS/sAV/sAXYCAS3+AVH+AVwCASr7AVL7AV8CASipAkypAlUCASKmAk2mAnICASGxAkyxAmECAR6uAk2uAnECAR3NAkzNAlYCARXKAk3KAnICARTVAkzVAmsCARLSAk3SAnECARGNAc0BjQHuAQIBDJIBwAGSAcQBAgEKkgFAkgFYAgEIkgGsAZIBsgECAQeSAdIBkgHiAQIBBlQ/VEgCAX9RQFFNAgF9Vx9XNAIBb1kVZSACAXFoyQFo6gECAW1tpAJtxAICAWukAUakAXMCAVuhAUehAVcCAVmsAUSsAVICAVepAUWpAWoCAVa0AUS0AVICAVSxAUWxAWkCAVPZAVzZAWUCAUbWAV3WAXQCAUTfAXXfAX0CAUHeAWXeAXUCAT/cAdAB3AHeAQIBPogCJY8CLgIBN5gClQGYAoACAgEzWhdeLwIBeF8XZC8CAXKNAk+NAmMCATqKAlCKAmICAThcbFx0AgF6WskBWuQBAgF5YlRiagIBdl/SAV/2AQIBdWFkYXoCAXM=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -505,7 +505,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="TryCatch_12" sap:VirtualizedContainerService.HintSize="418,416" />
-      <sap2010:ViewStateData Id="TryCatch_11" sap:VirtualizedContainerService.HintSize="418,686" />
+      <sap2010:ViewStateData Id="TryCatch_11" sap:VirtualizedContainerService.HintSize="418,565.333333333333" />
       <sap2010:ViewStateData Id="Assign_31" sap:VirtualizedContainerService.HintSize="242.666666666667,60" />
       <sap2010:ViewStateData Id="Assign_32" sap:VirtualizedContainerService.HintSize="242.666666666667,60" />
       <sap2010:ViewStateData Id="Sequence_35" sap:VirtualizedContainerService.HintSize="264.666666666667,284">
@@ -582,7 +582,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_12" sap:VirtualizedContainerService.HintSize="232.666666666667,97.3333333333333">
+      <sap2010:ViewStateData Id="State_12" sap:VirtualizedContainerService.HintSize="444,1002">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">256.333333333333,239.333333333333</av:Point>
@@ -602,7 +602,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_13" sap:VirtualizedContainerService.HintSize="530,1655.33333333333">
+      <sap2010:ViewStateData Id="State_13" sap:VirtualizedContainerService.HintSize="240,111.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">300,14.3333333333333</av:Point>
