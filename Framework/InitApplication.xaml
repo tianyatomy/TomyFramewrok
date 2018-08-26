@@ -7,7 +7,6 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
- xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -105,36 +104,18 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Init Applications" sap2010:WorkflowViewState.IdRef="Sequence_26">
-    <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open application 'calc.exe  计算器'" FileName="C:\Windows\system32\calc.exe" sap2010:WorkflowViewState.IdRef="OpenApplication_1" InformativeScreenshot="81807657673d0b353ff7d407e0ce9856" Selector="&lt;wnd app='calc.exe' cls='CalcFrame' title='计算器' /&gt;">
-      <ui:OpenApplication.Body>
-        <ActivityAction x:TypeArguments="x:Object">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_27" />
-        </ActivityAction>
-      </ui:OpenApplication.Body>
-    </ui:OpenApplication>
-    <sads:DebugSymbol.Symbol>dzRDOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXEluaXRBcHBsaWNhdGlvbi54YW1sBWwDeA4CAQFtBXYaAgECbckCbYMDAgEFbbQBbdIBAgEEcwtzVgIBAw==</sads:DebugSymbol.Symbol>
-  </Sequence>
+  <Sequence DisplayName="Init Applications" sap2010:WorkflowViewState.IdRef="Sequence_26" sads:DebugSymbol.Symbol="dz5DOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXEZyYW1ld29ya1xJbml0QXBwbGljYXRpb24ueGFtbAFrA2uQAQIBAQ==" />
+  <sap2010:WorkflowViewState.IdRef>InitApplication_1</sap2010:WorkflowViewState.IdRef>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="200,100">
+      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="200,100">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="414,246" />
-      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="464,370">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InitApplication_1" sap:VirtualizedContainerService.HintSize="240,180" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
