@@ -1,0 +1,14 @@
+{
+  "name": "TomyFramework",
+  "description": "Blank Project",
+  "main": "Main.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.2",
+  "projectVersion": "1.0.6770.21815",
+  "packOptions": {},
+  "runtimeOptions": {}
+}
