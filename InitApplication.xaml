@@ -1,4 +1,4 @@
-﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="KillApplications" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="KillApplications_1"
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="InitApplication" mva:VisualBasic.Settings="{x:Null}"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
@@ -68,6 +68,7 @@
       <x:String>UiPath.SOAP.Activities</x:String>
       <x:String>UiPath.XML.Activities</x:String>
       <x:String>GoogleSpreadsheet</x:String>
+      <x:String>UiPath.Database</x:String>
       <x:String>System.Windows.Markup</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
@@ -97,43 +98,43 @@
       <AssemblyReference>UiPath.Web</AssemblyReference>
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
       <AssemblyReference>GoogleSpreadsheet.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Kill Applications" sap2010:WorkflowViewState.IdRef="Sequence_33">
-    <ui:CommentOut DisplayName="Comment out">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities">
-          <ui:KillProcess Process="{x:Null}" ContinueOnError="True" DisplayName="Kill process" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="calc" />
-          <sap2010:WorkflowViewState.IdRef>Sequence_34</sap2010:WorkflowViewState.IdRef>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap2010:WorkflowViewState.IdRef>CommentOut_1</sap2010:WorkflowViewState.IdRef>
-    </ui:CommentOut>
-    <sads:DebugSymbol.Symbol>dz9DOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXEZyYW1ld29ya1xLaWxsQXBwbGljYXRpb25zLnhhbWwCagN1DgIBAWsFcxUCAQI=</sads:DebugSymbol.Symbol>
+  <Sequence DisplayName="Init Applications" sap2010:WorkflowViewState.IdRef="Sequence_26">
+    <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open application 'calc.exe  计算器'" FileName="C:\Windows\system32\calc.exe" sap2010:WorkflowViewState.IdRef="OpenApplication_1" InformativeScreenshot="81807657673d0b353ff7d407e0ce9856" Selector="&lt;wnd app='calc.exe' cls='CalcFrame' title='计算器' /&gt;">
+      <ui:OpenApplication.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_27" />
+        </ActivityAction>
+      </ui:OpenApplication.Body>
+    </ui:OpenApplication>
+    <sads:DebugSymbol.Symbol>dzRDOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXEluaXRBcHBsaWNhdGlvbi54YW1sBWwDeA4CAQFtBXYaAgECbckCbYMDAgEFbbQBbdIBAgEEcwtzVgIBAw==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="KillProcess_2" sap:VirtualizedContainerService.HintSize="200,22" />
-      <sap2010:ViewStateData Id="Sequence_34" sap:VirtualizedContainerService.HintSize="222,146">
+      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="200,100">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="416,224" />
-      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="438,348">
+      <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="414,246" />
+      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="464,370">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="KillApplications_1" sap:VirtualizedContainerService.HintSize="478,428" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

@@ -101,24 +101,16 @@
                     </Sequence>
                   </If.Then>
                 </If>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke KillApplications workflow" UnSafe="False" WorkflowFileName="Framework\KillApplications.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke KillApplications workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\KillApplications.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <scg:Dictionary x:TypeArguments="x:String, Argument" />
                   </ui:InvokeWorkflowFile.Arguments>
-                  <sap2010:WorkflowViewState.IdRef>InvokeWorkflowFile_5</sap2010:WorkflowViewState.IdRef>
                 </ui:InvokeWorkflowFile>
-                <Sequence DisplayName="Init Applications" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                  <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open application 'calc.exe  计算器'" FileName="C:\Windows\system32\calc.exe" sap2010:WorkflowViewState.IdRef="OpenApplication_1" InformativeScreenshot="81807657673d0b353ff7d407e0ce9856" Selector="&lt;wnd app='calc.exe' cls='CalcFrame' title='计算器' /&gt;">
-                    <ui:OpenApplication.Body>
-                      <ActivityAction x:TypeArguments="x:Object">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_27" />
-                      </ActivityAction>
-                    </ui:OpenApplication.Body>
-                  </ui:OpenApplication>
-                </Sequence>
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Open applications and set them to the looping interface" DisplayName="Invoke InitApplication workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="InitApplication.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
@@ -378,7 +370,7 @@
       <Variable x:TypeArguments="sd:DataRow" Name="TransactionRow" />
       <Variable x:TypeArguments="ui:BusinessRuleException" Name="BusinessRuleException" />
     </StateMachine.Variables>
-    <sads:DebugSymbol.Symbol>dylDOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXE1haW4ueGFtbGNIA/4CEgIBAfgCf/gCggEDAYMBSgfuAg8CAVyiAQ/qAhcCAUfXARflAh8CAQ2SAQ+dARcCAQJMC40BFgIBY5ABbJABiQECAWCgAWegAYEBAgFepAET0gEeAgFM1QF01QGUAQIBSugCkQHoAq4BAgFJ2QEbpgImAgEmvgIzvgJOAgEjqwIfvAIqAgEbywIzywJwAgEawgIfyQIoAgEX4gIz4gJYAgEWzwIf4AIqAgEPlAETmwEeAgEETg96GgIBaYIBE4kBHAIBZKYBF78BIgIBUccBG84BJAIBTdsBH+oBKgIBPI0CH6QCKgIBMfIBI/kBLAIBLIECI4gCLAIBJ6wCIbMCKgIBILQCIbsCKgIBHMcCSscCVQIBGcQCS8QCZQIBGNACIdcCKgIBE9gCId8CKgIBEJUBFZkBLQIBC5oBFZoB5QECAQVPEVYaAgF/VxFnFgIBcWgRbSkCAW9uEXkcAgFqhwFBhwFMAgFnhAFChAFPAgFlpwEZrgEiAgFYrwEZtgEiAgFVtwEZvgEiAgFSzAFIzAFRAgFQyQFJyQFZAgFO3AEh4wEqAgFD5AEh6QE5AgE9jwIjmAIuAgE2oAInoAKDAgIBMvcBXvcBaQIBL/QBX/QBdgIBLYYCUYYCXAIBKoMCUoMCXwIBKLECTLECVQIBIq4CTa4CZwIBIbkCTLkCYQIBHrYCTbYCcQIBHdUCTNUCVgIBFdICTdICZwIBFN0CTN0CawIBEtoCTdoCcQIBEZUBzQGVAe4BAgEMmgHAAZoBxAECAQqaAUCaAVgCAQiaAawBmgGyAQIBB5oB0gGaAeIBAgEGVD9USAMBggFRQFFNAwGAAVcfVzQCAXJZFWUgAgF0aJIBaLMBAgFwbxN4KAIBa6wBRqwBcwIBW6kBR6kBVwIBWbQBRLQBUgIBV7EBRbEBXwIBVrwBRLwBUgIBVLkBRbkBaQIBU+EBXOEBZQIBRt4BXd4BdAIBROcBdecBfQIBQeYBZeYBdQIBP+QB0AHkAd4BAgE+kAIllwIuAgE3oAKVAaACgAICATNaF14vAgF7XxdkLwIBdW/XAm+RAwIBbm/CAW/gAQIBbXUZdWQCAWyVAk+VAmMCATqSAlCSAmICAThcbFx0AgF9WskBWuQBAgF8YlRiagIBeV/SAV/2AQIBeGFkYXoCAXY=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dylDOlxVc2Vyc1xUb215XGdpdFxUb215RnJhbWV3cm9rXE1haW4ueGFtbGBIA/YCEgIBAfACf/ACggEDAYABSgfmAg8CAVyaAQ/iAhcCAUfPARfdAh8CAQ2KAQ+VARcCAQJMC4UBFgIBY4gBbIgBiQECAWCYAWeYAYEBAgFenAETygEeAgFMzQF0zQGUAQIBSuACkQHgAq4BAgFJ0QEbngImAgEmtgIztgJOAgEjowIftAIqAgEbwwIzwwJwAgEaugIfwQIoAgEX2gIz2gJYAgEWxwIf2AIqAgEPjAETkwEeAgEETg9yGgIBaXoTgQEcAgFkngEXtwEiAgFRvwEbxgEkAgFN0wEf4gEqAgE8hQIfnAIqAgEx6gEj8QEsAgEs+QEjgAIsAgEnpAIhqwIqAgEgrAIhswIqAgEcvwJKvwJVAgEZvAJLvAJlAgEYyAIhzwIqAgET0AIh1wIqAgEQjQEVkQEtAgELkgEVkgHlAQIBBU8RVhoCAXxXEWcWAgFuaBFsKQIBbG0RcSkCAWp/QX9MAgFnfEJ8TwIBZZ8BGaYBIgIBWKcBGa4BIgIBVa8BGbYBIgIBUsQBSMQBUQIBUMEBScEBWQIBTtQBIdsBKgIBQ9wBIeEBOQIBPYcCI5ACLgIBNpgCJ5gCgwICATLvAV7vAWkCAS/sAV/sAXYCAS3+AVH+AVwCASr7AVL7AV8CASipAkypAlUCASKmAk2mAmcCASGxAkyxAmECAR6uAk2uAnECAR3NAkzNAlYCARXKAk3KAmcCARTVAkzVAmsCARLSAk3SAnECARGNAc0BjQHuAQIBDJIBwAGSAcQBAgEKkgFAkgFYAgEIkgGsAZIBsgECAQeSAdIBkgHiAQIBBlQ/VEgCAX9RQFFNAgF9Vx9XNAIBb1kVZSACAXFoyQFo6gECAW1tpAJtugICAWukAUakAXMCAVuhAUehAVcCAVmsAUSsAVICAVepAUWpAV8CAVa0AUS0AVICAVSxAUWxAWkCAVPZAVzZAWUCAUbWAV3WAXQCAUTfAXXfAX0CAUHeAWXeAXUCAT/cAdAB3AHeAQIBPogCJY8CLgIBN5gClQGYAoACAgEzWhdeLwIBeF8XZC8CAXKNAk+NAmMCATqKAlCKAmICAThcbFx0AgF6WskBWuQBAgF5YlRiagIBdl/SAV/2AQIBdWFkYXoCAXM=</sads:DebugSymbol.Symbol>
   </StateMachine>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -394,22 +386,14 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,487.333333333333" />
       <sap2010:ViewStateData Id="InvokeWorkflowFile_5" sap:VirtualizedContainerService.HintSize="464,86.6666666666667" />
-      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="200,100">
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_6" sap:VirtualizedContainerService.HintSize="464,130.666666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenApplication_1" sap:VirtualizedContainerService.HintSize="414,246" />
-      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="464,370">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_23" sap:VirtualizedContainerService.HintSize="486,1248">
+      <sap2010:ViewStateData Id="Sequence_23" sap:VirtualizedContainerService.HintSize="486,1008.66666666667">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -425,7 +409,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="TryCatch_8" sap:VirtualizedContainerService.HintSize="504,1520" />
+      <sap2010:ViewStateData Id="TryCatch_8" sap:VirtualizedContainerService.HintSize="504,1361.33333333333" />
       <sap2010:ViewStateData Id="InvokeWorkflowFile_3" sap:VirtualizedContainerService.HintSize="314,86.6666666666667" />
       <sap2010:ViewStateData Id="WriteRange_1" sap:VirtualizedContainerService.HintSize="314,114.666666666667" />
       <sap2010:ViewStateData Id="Sequence_36" sap:VirtualizedContainerService.HintSize="336,365.333333333333">
@@ -618,7 +602,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_13" sap:VirtualizedContainerService.HintSize="530,1974">
+      <sap2010:ViewStateData Id="State_13" sap:VirtualizedContainerService.HintSize="530,1921.33333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">300,14.3333333333333</av:Point>
